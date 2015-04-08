@@ -14,51 +14,69 @@ class HomeController extends BaseController {
 	|	Route::get('/', 'HomeController@showWelcome');
 	|
 	*/
+	protected $layout = 'frontend.layouts.master';
+	public $data;
+	
+	public function __construct() {
+		parent::__construct();
+		$this->data['listGenre'] = GenreModel::listAll();
+		
+	}
 
-	public function homepage()
-	{
-	    $data['title'] = 'Home Page';
-	    $data['track'] = 'homepage';
-		return View::make('frontend.pages.homepage')->with($data);
-	}
-	public function onGoing()
-	{
-	    $data['title'] = 'On Going';
-	    $data['track'] = 'on-going';
-	    return View::make('frontend.pages.ongoing')->with($data);
-	}
-	public function series()
-	{
-	    $data['title'] = 'Bouty Lady 123';
-	    $data['track'] = 'series';
-	    return View::make('frontend.pages.series')->with($data);
+	public function homepage() {
+	    $this->data['title'] = 'Home Page';
+	    $this->data['track'] = 'homepage';
+	    //$this->data['listGenre'] = GenreModel::listAll();
+		return View::make('frontend.pages.homepage')->with($this->data);
 	}
 	
-	public function watch()
-	{
-	    $data['title'] = 'Watching Bouty Lady 123';
-	    $data['track'] = 'watch';
-	    return View::make('frontend.pages.watch')->with($data);
+	public function onGoing() {
+	    $this->data['title'] = 'On Going';
+	    $this->data['track'] = 'on-going';
+	    return View::make('frontend.pages.ongoing')->with($this->data);
 	}
 	
-	public function about()
-	{
-	    $data['title'] = 'About';
-	    $data['track'] = 'about';
-	    return View::make('frontend.pages.about')->with($data);
+	public function series() {
+	    $this->data['title'] = 'Bouty Lady 123';
+	    $this->data['track'] = 'series';
+	    return View::make('frontend.pages.series')->with($this->data);
 	}
 	
-	public function contact()
-	{
-	    $data['title'] = 'Contact';
-	    $data['track'] = 'contact';
-	    return View::make('frontend.pages.contact')->with($data);
+	public function watch() {
+	    $this->data['title'] = 'Watching Bouty Lady 123';
+	    $this->data['track'] = 'watch';
+	    return View::make('frontend.pages.watch')->with($this->data);
 	}
 	
-	public function faq()
-	{
-	    $data['title'] = 'FAQ';
-	    $data['track'] = 'faq';
-	    return View::make('frontend.pages.faq')->with($data);
+	public function about() {
+	    $this->data['title'] = 'About';
+	    $this->data['track'] = 'about';
+	    return View::make('frontend.pages.about')->with($this->data);
 	}
+	
+	public function contact() {
+	    $this->data['title'] = 'Contact';
+	    $this->data['track'] = 'contact';
+	    return View::make('frontend.pages.contact')->with($this->data);
+	}
+	
+	public function faq() {
+	    $this->data['title'] = 'FAQ';
+	    $this->data['track'] = 'faq';
+	    return View::make('frontend.pages.faq')->with($this->data);
+	}
+	
+	public function listByGenre($friendly_name) {
+		//var_dump($friendly_name);
+		if ($friendly_name == 'all') {
+			$this->data['title'] = 'All Genres';
+		} else {
+			$value = GenreModel::detailByfriendlyName($friendly_name);
+			$this->data['title'] = $value->name;
+		}
+		
+		$this->data['track'] = $friendly_name;
+		return View::make('frontend.pages.movie_by_genre')->with($this->data);
+	}
+	
 }

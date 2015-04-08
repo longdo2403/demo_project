@@ -17,6 +17,9 @@ Route::get('contact.html', array('as' => 'contact', 'uses' => 'HomeController@co
 Route::get('faq.html', array('as' => 'faq', 'uses' => 'HomeController@faq'));
 Route::get('on-going.html', array('as' => 'on-going', 'uses' => 'HomeController@onGoing'));
 
+Route::get('genres/{nameGenres}.html', array('as' => 'index.genres', 'uses' => 'HomeController@listByGenre'))
+->where(array('nameGenres' => '[a-zA-Z0-9-_]+'));
+
 Route::get('series/{nameDramas}-episode-{id}.html', array('as' => 'watch', 'uses' => 'HomeController@watch'))
 ->where(array('nameDramas' => '[a-zA-Z0-9-_]+', 'id' => '[0-9]+'));
 
