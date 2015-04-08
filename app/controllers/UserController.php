@@ -14,6 +14,33 @@ class UserController extends BaseController {
 		return View::make('frontend.pages.users.register')->with($data);
 	}
 	
+	public function doRegister()
+	{
+	    $params = Input::all();
+	    $rules = array(
+	        'first_name'            =>  'required|alpha|min:2',
+	        'last_name'             =>  'required|alpha|min:2',
+	        'display_name'          =>  'required|min:2',
+	        'email'                 =>  'required|email|unique:dtb_users',
+	        'password'              =>  'required|alpha_num|between:6,12|confirmed',
+	        'password_confirmation' =>  'required|alpha_num|between:6,12'
+	    );
+	    $validator = Validator::make($params, $rules);
+	    if ($validator->fails())
+	    {
+	        return Redirect::to('/register')->withInput()->withErrors($validator);
+	    }
+	    else
+	    {
+	        $ret = MemberModel::saveUser($params);
+	        if ($ret) {
+	            return Redirect::to('/login')->withInput()->with('message', '<p class="alert alert-success">Thanks for registering!</p>');
+	        } else {
+	            return Redirect::to('/register')->withInput()->with('message', '<p class="alert alert-danger">Ohmmmm ! Errors</p>');
+	        }
+	    }
+	}
+	
 	public function login()
 	{
 	    $data['title'] = 'Login';
@@ -40,7 +67,7 @@ class UserController extends BaseController {
 	        }
 	        else 
 	        {
-	            return Redirect::to('/login')->withInput()->with('message', 'Your username/password combination was incorrect');
+	            return Redirect::to('/login')->withInput()->with('message', '<p class="alert alert-danger">Your username/password combination was incorrect</p>');
 	        }
 	    }
 	}

@@ -14,7 +14,7 @@
             </p>
             @endif
             @if(Session::has('message'))
-                <p class="alert alert-danger">{{ Session::get('message') }}</p>
+                {{ Session::get('message') }}
             @endif
             <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 			<div class="form-group <?= $errors->has('email') ? 'has-error' : '' ?>">

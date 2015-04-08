@@ -17,7 +17,6 @@ class HomeController extends BaseController {
 
 	public function homepage()
 	{
-	    var_dump(Session::all());
 	    $data['title'] = 'Home Page';
 	    $data['track'] = 'homepage';
 		return View::make('frontend.pages.homepage')->with($data);
