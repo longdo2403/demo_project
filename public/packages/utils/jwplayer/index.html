@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript" src="jwplayer.js" ></script>
+<script type="text/javascript">jwplayer.key="Tl/cGRKD5+mHxuBA9abJoeWYGnxLoRlF9Xt8VQHJS2nHMmlibF4GZ6FPp4Zk0206";</script>
+    </head>
+    <body>
+        <div id='player'></div>
+	<script type='text/javascript'>
+		jwplayer('player').setup({
+			//file: 'http://download.wavetlan.com/SVV/Media/HTTP/MP4/ConvertedFiles/MediaCoder/MediaCoder_test1_1m9s_AVC_VBR_256kbps_640x480_24fps_MPEG2Layer3_CBR_160kbps_Stereo_22050Hz.mp4',
+			height: 360,
+			width: 640,
+			skin: 'bekle',
+
+			listbar: {
+				position: "right",
+				size: 280,
+			},
+			playlist: [
+				{
+					image: "4.png",
+					sources: [{ 
+					  file: "http://download.wavetlan.com/SVV/Media/HTTP/MP4/ConvertedFiles/MediaCoder/MediaCoder_test1_1m9s_AVC_VBR_256kbps_640x480_24fps_MPEG2Layer3_CBR_160kbps_Stereo_22050Hz.mp4"
+					}],
+					title: "Sintel Movie Trailer",
+					tracks: [{
+					  file: "http://download.wavetlan.com/SVV/Media/HTTP/MP4/ConvertedFiles/MediaCoder/MediaCoder_test1_1m9s_AVC_VBR_256kbps_640x480_24fps_MPEG2Layer3_CBR_160kbps_Stereo_22050Hz.mp4"
+					}]
+				},
+				{
+					image: "4.png",
+					sources: [{ 
+					  file: "http://download.wavetlan.com/SVV/Media/HTTP/MP4/ConvertedFiles/MediaCoder/MediaCoder_test4_1m10s_MPEG4SP_VBR_258kbps_176x144_30fps_MPEG1Layer3_CBR_32kbps_Stereo_48000Hz.mp4"
+					}],
+					title: "Sintel Movie Trailer 2",
+					tracks: [{
+					  file: "http://download.wavetlan.com/SVV/Media/HTTP/MP4/ConvertedFiles/MediaCoder/MediaCoder_test4_1m10s_MPEG4SP_VBR_258kbps_176x144_30fps_MPEG1Layer3_CBR_32kbps_Stereo_48000Hz.mp4"
+					}]
+				}
+			]
+		});
+		
+		/*
+		function addVideo(videoUrl, videoThumb, videoTitle) {
+        var playlist = jwplayer().getPlaylist();
+        var newItem = {
+            file: videoUrl,
+            image: videoThumb,
+            title: videoTitle
+        };
+        playlist.push(newItem);
+        jwplayer().load(playlist);
+		}
+		*/
+	</script>
+	
+	<p>Click on one of the links below to add an item to the player:</p>
+<ul>
+<li><a href="http://www.longtailvideo.com/support/jw-player/jw-player-for-flash-v5/16026/loading-a-playlist-into-the-player#" onclick="addVideo('http://content.bitsontherun.com/videos/yj1shGJB-60830.mp4', 'http://content.bitsontherun.com/thumbs/yj1shGJB-320.jpg', 'Sintel trailer'); return false;">Add the Sintel trailer to the playlist</a></li>
+<li><a href="http://www.longtailvideo.com/support/jw-player/jw-player-for-flash-v5/16026/loading-a-playlist-into-the-player#" onclick="addVideo('http://content.bitsontherun.com/videos/i8oQD9zd-kNspJqnJ.mp4', 'http://content.bitsontherun.com/thumbs/i8oQD9zd-640.jpg', 'Tears of Steel'); return false;">Add the Tears of Steel trailer to the playlist</a></li>
+</ul>
+    </body>
+</html>

@@ -1,0 +1,22 @@
+--- Users:
+	Đăng nhập
+	Xem trang chủ (Phim phổ biến, phim mới nhất)
+	Xem danh sách phim theo danh mục (thể loại)
+	Xem chi tiết phim (auto chạy từng part trong 1 tập phim)
+	Xem danh sách các phim liên quan
+	Tìm kiếm
+	Comment bằng facebook
+	
+--- Admin
+	Quản lý người dùng (users).
+		+ Xem danh sách người dùng
+		+ Tìm kiếm người dùng
+		+ Thêm người dùng
+		+ Xóa thông tin người dùng
+		+ Sửa thông tin người dùng
+	Quản lý danh mục (thể loại) phim.
+		+ Xem - tìm kiếm - Thêm - xóa - sửa
+	Quản lý phim
+		+  Xem - tìm kiếm - Thêm - xóa - sửa
+	Quản lý quảng cáo(nếu có)
+		+ Xem - thêm - xóa - sửa
