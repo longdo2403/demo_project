@@ -10,37 +10,37 @@
     <!-- Slides Container -->
     <div u="slides" class="slides">
         <div>
-            <img u="image" src="{{asset('packages/images/slider-banner/banner-blood-korean-drama.jpg')}}" />
+            <img u="image" src="{{asset('public/packages/images/slider-banner/banner-blood-korean-drama.jpg')}}" />
             <div u="thumb">
-                <img class="i" src="{{asset('packages/images/slider-banner/banner-blood-korean-drama.jpg')}}" /><div class="t">Blood (Korean)</div>
+                <img class="i" src="{{asset('public/packages/images/slider-banner/banner-blood-korean-drama.jpg')}}" /><div class="t">Blood (Korean)</div>
                 <div class="c"><a href="#" class="text-white">Episode 121| Episode 111| Episode 101 </a></div>
             </div>
         </div>
         <div>
-            <img u="image" src="{{asset('packages/images/slider-banner/banner-healer.jpg')}}" />
+            <img u="image" src="{{asset('public/packages/images/slider-banner/banner-healer.jpg')}}" />
             <div u="thumb">
-                <img class="i" src="{{asset('packages/images/slider-banner/banner-healer.jpg')}}" /><div class="t">The Three</div>
+                <img class="i" src="{{asset('public/packages/images/slider-banner/banner-healer.jpg')}}" /><div class="t">The Three</div>
                 <div class="c"><a href="#" class="text-white">Episode 121| Episode 111| Episode 101 </a></div>
             </div>
         </div>
         <div>
-            <img u="image" src="{{asset('packages/images/slider-banner/banner-kill-me-heal-me.jpg')}}" />
+            <img u="image" src="{{asset('public/packages/images/slider-banner/banner-kill-me-heal-me.jpg')}}" />
             <div u="thumb">
-                <img class="i" src="{{asset('packages/images/slider-banner/banner-kill-me-heal-me.jpg')}}" /><div class="t">Kill Me, Heal Me</div>
+                <img class="i" src="{{asset('public/packages/images/slider-banner/banner-kill-me-heal-me.jpg')}}" /><div class="t">Kill Me, Heal Me</div>
                 <div class="c"><a href="#" class="text-white">Episode 121| Episode 111| Episode 101 </a></div>
             </div>
         </div>
         <div>
-            <img u="image" src="{{asset('packages/images/slider-banner/banner-pretty-boy.jpg')}}" />
+            <img u="image" src="{{asset('public/packages/images/slider-banner/banner-pretty-boy.jpg')}}" />
             <div u="thumb">
-                <img class="i" src="{{asset('packages/images/slider-banner/banner-pretty-boy.jpg')}}" /><div class="t">Healer</div>
+                <img class="i" src="{{asset('public/packages/images/slider-banner/banner-pretty-boy.jpg')}}" /><div class="t">Healer</div>
                 <div class="c"><a href="#" class="text-white">Episode 121| Episode 111| Episode 101 </a></div>
             </div>
         </div>
         <div>
-            <img u="image" src="{{asset('packages/images/slider-banner/banner-the-three-musketeers.jpg')}}" />
+            <img u="image" src="{{asset('public/packages/images/slider-banner/banner-the-three-musketeers.jpg')}}" />
             <div u="thumb">
-                <img class="i" src="{{asset('packages/images/slider-banner/banner-the-three-musketeers.jpg')}}" /><div class="t">Pretty Boy</div>
+                <img class="i" src="{{asset('public/packages/images/slider-banner/banner-the-three-musketeers.jpg')}}" /><div class="t">Pretty Boy</div>
                 <div class="c"><a href="#" class="text-white">Episode 121| Episode 111| Episode 101 </a></div>
             </div>
         </div>
@@ -60,8 +60,8 @@
     <!--#endregion ThumbnailNavigator Skin End -->
 </div>
 <!-- Jssor Slider End -->
-<script type="text/javascript" src="{{asset('packages/utils/jssor/js/jssor.js')}}"></script>
-<script type="text/javascript" src="{{asset('packages/utils/jssor/js/jssor.slider.js')}}"></script>
+<script type="text/javascript" src="{{asset('public/packages/utils/jssor/js/jssor.js')}}"></script>
+<script type="text/javascript" src="{{asset('public/packages/utils/jssor/js/jssor.slider.js')}}"></script>
     <script>
 
     jQuery(document).ready(function ($) {

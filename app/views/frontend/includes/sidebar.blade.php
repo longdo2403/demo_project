@@ -20,7 +20,7 @@
 	      <li class="media">
 	        <div class="media-left">
 	          <a href="#">
-	            <img width="60" height="85" class="media-object" src="<?= asset("packages/images/$item->main_picture") ?>" alt="{{$item->title}}">
+	            <img width="60" height="85" class="media-object" src="<?= asset("public/packages/images/$item->main_picture") ?>" alt="{{$item->title}}">
 	          </a>
 	        </div>
 	        <div class="media-body">
@@ -45,7 +45,7 @@
 	      <li class="media">
 	        <div class="media-left">
 	          <a href="#">
-	            <img width="60" height="85" class="media-object" src="<?= asset("packages/images/$item->main_picture") ?>" alt="{{$item->title}}">
+	            <img width="60" height="85" class="media-object" src="<?= asset("public/packages/images/$item->main_picture") ?>" alt="{{$item->title}}">
 	          </a>
 	        </div>
 	        <div class="media-body">
