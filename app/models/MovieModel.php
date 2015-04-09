@@ -3,7 +3,7 @@ class MovieModel extends eloquent{
     protected $table = 'dtb_movies';
     
     public function status(){
-        return $this->belongsTo('StatusModel');
+        return $this->hasOne('StatusModel', 'id', 'status');
     }
     
     public static function listPopular() {
@@ -17,7 +17,8 @@ class MovieModel extends eloquent{
     }
     
     public static function listAllMovie($per_pg) {
-        $all = MovieModel::paginate($per_pg);
+        //$all = MovieModel::paginate($per_pg);
+        $all = MovieModel::with('status')->paginate($per_pg);
         return $all;
     }
     

@@ -2,9 +2,12 @@
 @section('content')
     <?php if (!$listByGenre->isEmpty()): ?>
         <?php foreach ($listByGenre as $item): ?>
-        <?php echo $item->name ?>
         <?php $description = htmlspecialchars($item->description, ENT_QUOTES); ?>
-        <a href="{{route('series', $item->friendly_title)}}" class="col-xs-3 drama-box popoverData" data-content="<?php echo htmlentities('<span class="text-danger">Cast: </span> <a href="#">Long Do</a>, <a href="#">Luu Do</a> ..... <br><span class="text-info">Description: </span> ' . $description .' <br> '); ?>"
+        <a href="{{route('series', $item->friendly_title)}}" class="col-xs-3 drama-box popoverData" data-content="
+        <?php echo htmlentities(
+            '<span class="text-danger">Status: </span>' . $item['relations']['status']->name . '<br>
+             <span class="text-danger">Cast: </span> ' . FrontHelper::generateCastString($item->cast_ids) . ' ... <br>
+             <span class="text-info">Description: </span> ' . $description .' <br> '); ?>"
         rel="popover" data-placement="top" data-original-title="{{$item->title}}" data-trigger="hover">
             <div class="thumbnail">
                 <img class="boxImgMovie" src="<?= asset("public/packages/images/$item->main_picture") ?>" title="{{$item->title}}" alt="{{$item->title}}">

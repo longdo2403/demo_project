@@ -101,6 +101,7 @@ class HomeController extends BaseController {
         if ($friendly_name == 'all') {
             $this->data['title'] = 'All Genres';
             $this->data['listByGenre'] = MovieModel::listAllMovie($this->per_pg);
+            //var_dump($this->data['listByGenre'][0]['relations']['status']->name);die();
         } else {
             $value = GenreModel::detailByfriendlyName($friendly_name);
             $this->data['title'] = $value->name;
