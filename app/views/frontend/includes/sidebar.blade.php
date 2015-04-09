@@ -15,45 +15,46 @@
 		<strong class="color-blue">Popular Movies</strong>
 	</div>
 	<div class="bodyBox">
-	    <?php for($i = 0; $i < 10; $i++) : ?>
+	    <?php foreach ($listPopular as $item): ?>
 	    <ul class="media-list sidebar-list">
 	      <li class="media">
 	        <div class="media-left">
 	          <a href="#">
-	            <img class="media-object" src="{{asset('packages/images/angel-eyes-57.jpg')}}" alt="...">
+	            <img width="60" height="85" class="media-object" src="<?= asset("packages/images/$item->main_picture") ?>" alt="{{$item->title}}">
 	          </a>
 	        </div>
 	        <div class="media-body">
-	          <strong class="media-heading">Angel Eyes</strong><br>
-	          <span>Watched 123456 times.</span><br>
+	          <strong class="media-heading">{{$item->title}}</strong><br>
+	          <span>Watched {{$item->watched}} times.</span><br>
 	          <a href="#" class="btn btn-success btn-xs">See episodes</a>
 	        </div>
 	      </li>
 	    </ul>
-	    <?php endfor; ?>
+	    <?php endforeach; ?>
 	</div>
 </div>
+
 
 <div class="panel panel-default sideBox">
 	<div class="panel-heading">
         <strong class="color-blue">Newly Added</strong>
 	</div>
 	<div class="bodyBox">
-	    <?php for($i = 0; $i < 11; $i++) : ?>
+	    <?php foreach ($listNewlyAdded as $item): ?>
 	    <ul class="media-list sidebar-list">
 	      <li class="media">
 	        <div class="media-left">
 	          <a href="#">
-	            <img class="media-object" src="{{asset('packages/images/angel-eyes-57.jpg')}}" alt="...">
+	            <img width="60" height="85" class="media-object" src="<?= asset("packages/images/$item->main_picture") ?>" alt="{{$item->title}}">
 	          </a>
 	        </div>
 	        <div class="media-body">
-	          <strong class="media-heading">Angel Eyes</strong><br>
-	          <span>Friday, March 24</span><br>
+	          <strong class="media-heading">{{$item->title}}</strong><br>
+	          <span>Watched {{$item->watched}} times.</span><br>
 	          <a href="#" class="btn btn-success btn-xs">See episodes</a>
 	        </div>
 	      </li>
 	    </ul>
-	    <?php endfor; ?>
+	    <?php endforeach; ?>
 	</div>
 </div>
