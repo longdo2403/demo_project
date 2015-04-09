@@ -3,9 +3,12 @@
 		<strong class="color-blue">Browse by Genre</strong>
 	</div>
 	<div class="list-group">
-	<a class="list-group-item <?= ($track == 'all') ? 'active' : '' ?>" href="{{route('index.genres', array('all')) }}">All</a>
+	<a class="list-group-item <?= ($track == 'all') ? 'active' : '' ?>" href="{{route('index.genres', array('all')) }}"><i class="fa fa-caret-right text-success"></i>&nbsp;&nbsp;All</a>
 	<?php foreach ($listGenre as $item): ?>
-		<a class="list-group-item <?= ($track == $item->friendly_name) ? 'active' : '' ?>" href="{{route('index.genres', array($item->friendly_name))}}"><?php echo $item->name; ?></a>
+		
+		<a class="list-group-item <?= ($track == $item->friendly_name) ? 'active' : '' ?>" href="{{route('index.genres', array($item->friendly_name))}}">
+		  <i class="fa fa-caret-right"></i>&nbsp;&nbsp;<?php echo $item->name; ?>
+	  </a>
 	<?php endforeach; ?>
 	</div>
 </div>
@@ -20,7 +23,7 @@
 	      <li class="media">
 	        <div class="media-left">
 	          <a href="#">
-	            <img width="60" height="85" class="media-object" src="<?= asset("public/packages/images/$item->main_picture") ?>" alt="{{$item->title}}">
+	            <img width="60" height="85" class="media-object" src="<?= asset("public/packages/images/$item->main_picture") ?>" title="{{$item->title}}" alt="{{$item->title}}">
 	          </a>
 	        </div>
 	        <div class="media-body">

@@ -16,6 +16,7 @@ class HomeController extends BaseController {
     */
     protected $layout = 'frontend.layouts.master';
     public $data;
+    public $per_pg = 4;
     
     /**
      * constructor
@@ -99,9 +100,12 @@ class HomeController extends BaseController {
         //var_dump($friendly_name);
         if ($friendly_name == 'all') {
             $this->data['title'] = 'All Genres';
+            $this->data['listByGenre'] = MovieModel::listAllMovie($this->per_pg);
         } else {
             $value = GenreModel::detailByfriendlyName($friendly_name);
             $this->data['title'] = $value->name;
+            $genre_id = $value->id;
+            $this->data['listByGenre'] = MovieModel::listByGenre($genre_id, $this->per_pg);
         }
         
         $this->data['track'] = $friendly_name;

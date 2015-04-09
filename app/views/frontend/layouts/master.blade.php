@@ -19,6 +19,8 @@
         <link href="{{asset('public/packages/css/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
         
         <link href="{{asset('public/packages/css/style.css')}}" rel="stylesheet">
+        
+        <link href="{{asset('public/packages/css/custom.css')}}" rel="stylesheet">
     
         <!-- Custom styles for this template -->
         <link href="{{asset('public/packages/css/non-responsive.css')}}" rel="stylesheet">
@@ -62,8 +64,7 @@
                     <div class="col-xs-8">
                         <div class="border-head">
                             <h3>
-                                <strong class="color-blue">Daily Update</strong>
-                                - 27 March
+                                <strong class="color-blue">{{@$title}}</strong>
                             </h3>
                         </div>
                         @yield('content')

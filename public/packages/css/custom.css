@@ -1,0 +1,9 @@
+.list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover {
+  background-color: #428bca !important ;
+  border-color: #428bca !important ;
+}
+
+img.boxImgMovie {
+    width: 170px;
+    height: 180px;
+}
