@@ -108,7 +108,8 @@ class HomeController extends BaseController {
             $genre_id = $value->id;
             $this->data['listByGenre'] = MovieModel::listByGenre($genre_id, $this->per_pg);
         }
-        
+        $this->data['arrCast'] = CastModel::listAll()->toArray();
+        $this->data['arrGenres'] = GenreModel::listAll()->toArray();
         $this->data['track'] = $friendly_name;
         return View::make('frontend.pages.movie_by_genre')->with($this->data);
     }

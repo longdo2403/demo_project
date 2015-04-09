@@ -1,7 +1,6 @@
 <?php
 class FrontHelper {
-    public static function generateCastString($cast_ids) {
-        $casts = CastModel::listAll()->toArray();
+    public static function generateCastString($cast_ids, $casts) {
         $arrCast = array();
         $strRet = '';
         foreach ($casts as $key => $item) {
@@ -11,6 +10,21 @@ class FrontHelper {
         foreach ($arrIn as $value) {
             if (array_key_exists($value, $arrCast)) {
                 $strRet .= '<a href="#">' . $arrCast[$value] . '</a>' . ', ';
+            }
+        }
+        return FrontHelper::removeLastChar($strRet);
+    }
+    
+    public static function generateGenresString($genre_ids, $arrGenre) {
+        $arrRet = array();
+        $strRet = '';
+        foreach ($arrGenre as $key => $item) {
+            $arrRet[$item['id']] = $item['name'];
+        }
+        $arrIn = explode(',', $genre_ids);
+        foreach ($arrIn as $value) {
+            if (array_key_exists($value, $arrRet)) {
+                $strRet .= $arrRet[$value] . ', ';
             }
         }
         return FrontHelper::removeLastChar($strRet);
