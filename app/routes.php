@@ -30,5 +30,5 @@ Route::get('/register', array('as' => 'register', 'uses' => 'UserController@regi
 Route::post('/doregister', array('as' => 'doregister', 'uses' => 'UserController@doRegister'));
 
 Route::get('/login', array('as' => 'login', 'uses' => 'UserController@login'));
-Route::get('/logout', array('as' => 'logout', 'uses' => 'UserController@logout'));
 Route::post('/dologin', array('as' => 'dologin', 'uses' => 'UserController@dologin'));
+Route::get('/logout', array('as' => 'logout', 'uses' => 'UserController@logout'));

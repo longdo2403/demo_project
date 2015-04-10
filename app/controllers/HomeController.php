@@ -1,4 +1,6 @@
 <?php
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\Redirect;
 
 class HomeController extends BaseController {
 
@@ -50,9 +52,20 @@ class HomeController extends BaseController {
     /**
      * Make Series page
      */
-    public function series() {
-        $this->data['title'] = 'Bouty Lady 123';
-        $this->data['track'] = 'series';
+    public function series($friendly_title) {
+        try {
+            $objMovie = MovieModel::detailMovie($friendly_title);
+        } catch (ModelNotFoundException $e) {
+            return App::abort(404);
+        }
+        
+        $this->data['title'] = $objMovie->title . ' | Series';
+        $this->data['track'] = 'homepage';
+        $this->data['str_casts'] = FrontHelper::generateCastString($objMovie->cast_ids, CastModel::listAll()->toArray());
+        $this->data['str_genres'] = FrontHelper::generateGenresString($objMovie->genre_ids, GenreModel::listAll()->toArray(), true) ;
+        $this->data['objMovie'] = $objMovie;
+        
+        
         return View::make('frontend.pages.series')->with($this->data);
     }
     

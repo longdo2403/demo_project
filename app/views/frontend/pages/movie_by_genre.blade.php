@@ -7,13 +7,17 @@
         <?php echo htmlentities(
             '<span class="text-danger">Status: </span>' . $item['relations']['status']->name . '<br>
              <span class="text-danger">Cast: </span> ' . FrontHelper::generateCastString($item->cast_ids, $arrCast) . ' ... <br>
-             <span class="text-info">Description: </span> ' . $description .' <br> '); ?>"
+             <span class="text-info">Description: </span> ' . str_limit($description, $limit = 150, $end = '...') .' <br> '); ?>"
         rel="popover" data-placement="top" data-original-title="{{$item->title;}}" data-trigger="hover">
-            <div class="thumbnail">
+            <div class="thumbnail" style="height: 270px;">
                 <img class="boxImgMovie" src="<?= asset("public/packages/images/$item->main_picture") ?>" title="{{$item->title}}" alt="{{$item->title}}">
                 <div class="caption">
-                    <h5 style="margin-top:0px;" class="text-center text-orange">{{$item->title}}</h5>
-                    <p style="margin: 0px; font-size:85%;"><strong class="text-purple">Genres</strong> <span class="text-concrete"><?= FrontHelper::generateGenresString($item->genre_ids, $arrGenres) ?></span></p>
+                    <div style="height: 33px; ">
+                        <h5 style="margin-top:0px;" class="text-center text-orange">{{str_limit($item->title, 30, '...')}}</h5>
+                    </div>
+                    <div style="height: 25px; ">
+                        <p style="margin: 0px; font-size:85%;"><strong class="text-purple">Genres</strong> <span class="text-concrete"><?= str_limit(FrontHelper::generateGenresString($item->genre_ids, $arrGenres), 35, '...') ?></span></p>
+                    </div>
                 </div>
             </div>
         </a>

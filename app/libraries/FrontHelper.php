@@ -15,7 +15,7 @@ class FrontHelper {
         return FrontHelper::removeLastChar($strRet);
     }
     
-    public static function generateGenresString($genre_ids, $arrGenre) {
+    public static function generateGenresString($genre_ids, $arrGenre, $disp_link = false) {
         $arrRet = array();
         $strRet = '';
         foreach ($arrGenre as $key => $item) {
@@ -24,7 +24,12 @@ class FrontHelper {
         $arrIn = explode(',', $genre_ids);
         foreach ($arrIn as $value) {
             if (array_key_exists($value, $arrRet)) {
-                $strRet .= $arrRet[$value] . ', ';
+                if (!$disp_link) {
+                    $strRet .= '' . $arrRet[$value] . '' . ', ';
+                } else {
+                    $strRet .= '<a href="#">' . $arrRet[$value] . '</a>' . ', ';
+                }
+                
             }
         }
         return FrontHelper::removeLastChar($strRet);

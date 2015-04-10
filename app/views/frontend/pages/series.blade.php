@@ -1,20 +1,20 @@
 @extends('frontend.layouts.master')
 @section('content')
 <div class="col-xs-8" id="box-content">
-    <h3 style="margin-top:0px;"><strong class="text-orange">Always (2011)</strong></h3>
-    <p><strong>Alternative Titles: </strong>Always, Only You, Ohjik Geudaeman, Only You (2011)</p>
-    <p><strong>Cast: </strong>So Ji-sub, Han Hyo-joo, Yun Jong-Hwa, Kang Shin-Il, Park Cheol-Min, Jo Sung-Ha</p>
-    <p><strong>Episodes: </strong>Finished</p>
+    <h3 style="margin-top:0px;"><strong class="text-orange">{{$objMovie->title;}}</strong></h3>
+    <p><strong>Alternative Titles: </strong>{{$objMovie->alt_title;}}</p>
+    <p><strong>Cast: </strong>{{$str_casts;}}</p>
+    <p><strong>Episodes: </strong>{{$objMovie['relations']['status']->name;}}</p>
     <p><strong>Category: </strong>Korean Drama Movies</p>
-    <p><strong>Genres : </strong> Drama, Romance</p>
+    <p><strong>Genres : </strong> {{$str_genres;}}</p>
     <p><strong>Type: </strong>Movie</p>
-    <p><strong>Release: </strong>2013</p>
-    <p><strong>Status: </strong>Finished</p>
-    <p><strong>Description : </strong>Cheol-Min (So Ji-Sub), a man with a dark, mysterious past, picks up a part-time night job as a parking lot attendant. He sits in the tiny pay booth in the parking lot and stares at the small television. A woman named Jung-Hwa (Han Hyo-Joo) walks into the booth. She offers something to Cheol-Min and sits next to him. Cheol-Min realizes the woman is blind and she is confusing him for the parking attendant who worked their previously. </p>
+    <p><strong>Release: </strong><?php echo date('Y', strtotime($objMovie->release)); ?></p>
+    <p><strong>Status: </strong>{{$objMovie['relations']['status']->name;}}</p>
+    <p><strong>Description : </strong>{{$objMovie->description;}}</p>
      
 </div>
 <div class="col-xs-4">
-    <img class="thumbnail" alt="" src="http://placehold.it/210x300">
+    <img width="210" height="300" class="thumbnail" alt="{{$objMovie->title;}}" src="<?= asset("public/packages/images/$objMovie->main_picture") ?>">
 </div>
 
 <div id="listEpisode">
@@ -42,18 +42,27 @@
     rel="popover" data-placement="top" data-original-title="Bouty Lady <?php echo $i; ?>" data-trigger="hover">
         <div class="thumbnail">
             <img src="http://placehold.it/170x180">
-            <div class="caption">
-                <h5 style="margin-top:0px;" class="text-center text-orange">Bouty Lady <?= $i ?></h5>
-                <p style="margin: 0px; font-size:85%;"><strong class="text-purple">Genres</strong> <span class="text-concrete">Drama, Romance, Family</span></p>
+            <div class="caption" style="height: 90px;">
+                <div style="height: 33px; ">
+                    <h5 style="margin-top:0px;" class="text-center text-orange">Bouty Lady <?= $i ?></h5>
+                </div>
+                <div>
+                    <p style="margin: 0px; font-size:85%;"><strong class="text-purple">Genres</strong> <span class="text-concrete">Drama, Romance, Family</span></p>
+                </div>
+                
             </div>
         </div>
     </a>
     <a href="#" class="col-xs-3 drama-box popoverData" data-content="Popover with data-trigger" rel="popover" data-placement="top" data-original-title="In The Room Large Large <?= $i ?>" data-trigger="hover">
         <div class="thumbnail">
             <img src="http://placehold.it/170x180">
-            <div class="caption">
-                <h5 style="margin-top:0px;" class="text-center text-orange">In The Room Large Large <?= $i ?></h5>
-                <p style="margin: 0px; font-size:85%;"><strong class="text-purple">Genres</strong> <span class="text-concrete">Drama, Romance, Family</span></p>
+            <div class="caption" style="height: 90px;">
+                <div style="height: 33px; ">
+                    <h5 style="margin-top:0px;" class="text-center text-orange">In The Room Large Large <?= $i ?></h5>
+                </div>
+                <div style="height: 25px; ">
+                    <p style="margin: 0px; font-size:85%;"><strong class="text-purple">Genres</strong> <span class="text-concrete">Drama, Romance, Family</span></p>
+                </div>
             </div>
         </div>
     </a>

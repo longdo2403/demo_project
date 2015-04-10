@@ -17,13 +17,17 @@ class MovieModel extends eloquent{
     }
     
     public static function listAllMovie($per_pg) {
-        //$all = MovieModel::paginate($per_pg);
         $all = MovieModel::with('status')->paginate($per_pg);
         return $all;
     }
     
     public static function listByGenre($genre_id, $per_pg) {
-        $list = MovieModel::where("genre_ids", "LIKE", "%$genre_id%")->paginate($per_pg);
+        $list = MovieModel::with('status')->where("genre_ids", "LIKE", "%$genre_id%")->paginate($per_pg);
         return $list;
+    }
+    
+    public static function detailMovie($friendly_title) {
+        $movie = MovieModel::with('status')->where('friendly_title', "=", $friendly_title)->firstOrFail();
+        return $movie;
     }
 }

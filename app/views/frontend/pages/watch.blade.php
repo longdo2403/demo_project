@@ -1,6 +1,6 @@
 @extends('frontend.layouts.master')
 @section('content')
-<script type="text/javascript" src="{{asset('packages/utils/jwplayer/jwplayer.js')}}" ></script>
+<script type="text/javascript" src="{{asset('public/packages/utils/jwplayer/jwplayer.js')}}" ></script>
 <script type="text/javascript">jwplayer.key="Tl/cGRKD5+mHxuBA9abJoeWYGnxLoRlF9Xt8VQHJS2nHMmlibF4GZ6FPp4Zk0206";</script>
 
 <div id='player'></div>

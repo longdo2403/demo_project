@@ -77,5 +77,11 @@ App::down(function()
 | definitions instead of putting them all in the main routes file.
 |
 */
+App::missing(function($exception)
+{
+    $data['title'] = '404 Page';
+    $data['track'] = 'homepage';
+    return Response::view('frontend.errors.404', $data, 404);
+});
 
 require app_path().'/filters.php';
