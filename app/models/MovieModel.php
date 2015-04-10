@@ -10,6 +10,10 @@ class MovieModel extends eloquent{
         return $this->hasOne('TypeModel', 'id', 'type_id');
     }
     
+    public function category() {
+        return $this->hasOne('CategoryModel', 'id', 'category_id');
+    }
+    
     public static function listPopular() {
         $populars = MovieModel::orderBy('watched', 'desc')->where('del_flag', DEL_FLAG_FALSE)->take(12)->get();
         return $populars;
@@ -26,18 +30,18 @@ class MovieModel extends eloquent{
     }
     
     public static function listByGenre($genre_id, $per_pg) {
-        $list = MovieModel::with(array('status', 'type'))->where("genre_ids", "LIKE", "%$genre_id%")->where('del_flag', DEL_FLAG_FALSE)->paginate($per_pg);
+        $list = MovieModel::with(array('status', 'type', 'category'))->where("genre_ids", "LIKE", "%$genre_id%")->where('del_flag', DEL_FLAG_FALSE)->paginate($per_pg);
         return $list;
     }
     
     public static function detailMovie($friendly_title) {
-        $movie = MovieModel::with(array('status', 'type'))->where('friendly_title', "=", $friendly_title)->where('del_flag', DEL_FLAG_FALSE)->firstOrFail();
+        $movie = MovieModel::with(array('status', 'type', 'category'))->where('friendly_title', "=", $friendly_title)->where('del_flag', DEL_FLAG_FALSE)->firstOrFail();
         return $movie;
     }
     
     public static function listRelativeMovie($id, $type_id, $genre_ids) {
         $arrGenres = explode(',', $genre_ids);
-        $list = MovieModel::with(array('status', 'type'))->where('type_id',"=",$type_id)
+        $list = MovieModel::with(array('status', 'type', 'category'))->where('type_id',"=",$type_id)
                 ->where("id", "<>", $id)
                 ->Where(function($query) use ($arrGenres){
                     foreach ($arrGenres as $item) {

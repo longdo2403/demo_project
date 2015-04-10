@@ -5,8 +5,8 @@
     <p><strong>Alternative Titles: </strong>{{$objMovie->alt_title;}}</p>
     <p><strong>Cast: </strong>{{$str_casts;}}</p>
     <p><strong>Episodes: </strong>{{$objMovie['relations']['status']->name;}}</p>
-    <p><strong>Category: </strong>Korean Drama Movies</p>
     <p><strong>Genres : </strong> {{$str_genres;}}</p>
+    <p><strong>Category: </strong>{{$objMovie['relations']['category']->name}}</p>
     <p><strong>Type: </strong>{{$objMovie['relations']['type']->type_name}}</p>
     <p><strong>Release: </strong><?php echo date('Y', strtotime($objMovie->release)); ?></p>
     <p><strong>Status: </strong>{{$objMovie['relations']['status']->name;}}</p>
