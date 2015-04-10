@@ -7,7 +7,7 @@ class GenreModel extends Eloquent {
 	 * @return unknown
 	 */
 	public static function listAll() {
-		$genres = GenreModel::orderBy('name', 'asc')->get();
+		$genres = GenreModel::orderBy('name', 'asc')->where('del_flag', DEL_FLAG_FALSE)->get();
 		return $genres;
 	}
 	
@@ -17,7 +17,7 @@ class GenreModel extends Eloquent {
 	 * @return unknown
 	 */
 	public static function detailByfriendlyName($friendly_name) {
-		$genre = GenreModel::where("friendly_name", $friendly_name)->firstOrFail();
+		$genre = GenreModel::where("friendly_name", $friendly_name)->where('del_flag', DEL_FLAG_FALSE)->firstOrFail();
 		return $genre;
 	}
 }

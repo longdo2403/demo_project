@@ -34,6 +34,11 @@ class MovieModel extends eloquent{
         return $list;
     }
     
+    public static function listByCast($cast_id, $per_pg) {
+    	$list = MovieModel::with(array('status', 'type', 'category'))->where("cast_ids", "LIKE", "%$cast_id%")->where('del_flag', DEL_FLAG_FALSE)->paginate($per_pg);
+    	return $list;
+    }
+    
     public static function detailMovie($friendly_title) {
         $movie = MovieModel::with(array('status', 'type', 'category'))->where('friendly_title', "=", $friendly_title)->where('del_flag', DEL_FLAG_FALSE)->firstOrFail();
         return $movie;
@@ -49,5 +54,14 @@ class MovieModel extends eloquent{
                     }
                 })->where('del_flag', DEL_FLAG_FALSE)->take(8)->get();
         return $list;
+    }
+    
+    public static function listOnGoing($per_pg){
+    	$list = MovieModel::with(array('status', 'type', 'category'))
+    						->where("status", ON_GOING)
+    						->where('del_flag', DEL_FLAG_FALSE)
+    						->orderBy('updated_at', 'desc')
+    						->paginate($per_pg);
+    	return $list;
     }
 }

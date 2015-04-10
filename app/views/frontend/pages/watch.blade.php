@@ -24,7 +24,7 @@
             <i class="fa fa-long-arrow-right text-primary"></i>
             <a href="<?= route('watch', array($objMovie->friendly_title, $item->episode_id)) ?>">
                 {{$objMovie->title;}} Episode {{$item->episode_id;}}
-            </a> <?= ($current_ep == $item->episode_id) ? '<span class="label label-primary">Playing ..</span>' : '' ?>
+            </a> <?= ($current_ep == $item->episode_id) ? '<span class="label label-primary">Watching ..</span>' : '' ?>
         </dd>
     </dl>
     <?php endforeach; ?>
@@ -34,23 +34,12 @@
 		height: 400,
 		width: 740,
 		skin: 'bekle',
-
 		playlist: [
-			{
-				image: "4.png",
-				file: "http://content.jwplatform.com/videos/HkauGhRi-640.mp4",
-				title: "Sintel Movie Trailer 123"
+		   	<?php foreach ($listParts as $item): ?>
+		   	{
+				file: window.atob("<?= base64_encode($item->link); ?>"),
 			},
-			{
-				image: "4.png",
-				sources: [{ 
-				  file: "http://vjs.zencdn.net/v/oceans.mp4"
-				}],
-				title: "Sintel Movie Trailer 2",
-				tracks: [{
-				  file: "http://vjs.zencdn.net/v/oceans.mp4"
-				}]
-			},
+		   	<?php endforeach; ?>
 		]
 	});
 	function playVideo(index) {

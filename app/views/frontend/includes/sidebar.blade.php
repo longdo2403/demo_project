@@ -29,7 +29,7 @@
 	        <div class="media-body">
 	          <strong class="media-heading">{{str_limit($item->title, 60, '...')}}</strong><br>
 	          <span>Watched {{$item->watched}} times.</span><br>
-	          <a href="#" class="btn btn-success btn-xs">See episodes</a>
+	          <a href="{{route('series', $item->friendly_title)}}" title="See all episodes {{$item->title;}}" class="btn btn-success btn-xs">See episodes</a>
 	        </div>
 	      </li>
 	    </ul>
@@ -54,7 +54,7 @@
 	        <div class="media-body">
 	          <strong class="media-heading">{{str_limit($item->title, 60, '...')}}</strong><br>
 	          <span>Watched {{$item->watched}} times.</span><br>
-	          <a href="#" class="btn btn-success btn-xs">See episodes</a>
+	          <a href="{{route('series', $item->friendly_title)}}" title="See all episodes {{$item->title;}}" class="btn btn-success btn-xs">See episodes</a>
 	        </div>
 	      </li>
 	    </ul>

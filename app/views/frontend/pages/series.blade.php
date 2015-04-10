@@ -14,7 +14,7 @@
      
 </div>
 <div class="col-xs-4">
-    <img width="210" height="300" class="thumbnail" alt="{{$objMovie->title;}}" src="<?= asset("public/packages/images/$objMovie->main_picture") ?>">
+    <img width="210" height="300" class="thumbnail" title="{{$objMovie->title;}}" alt="{{$objMovie->title;}}" src="<?= asset("public/packages/images/$objMovie->main_picture") ?>">
 </div>
 
 <div id="listEpisode">

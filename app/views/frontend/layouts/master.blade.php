@@ -13,7 +13,7 @@
         
         <link href='//fonts.googleapis.com/css?family=Roboto:100,400,300,700' rel='stylesheet' type='text/css'>
     
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="{{asset('public/packages/utils/font-awesome/css/font-awesome.min.css')}}">
     
         <!-- Bootstrap core CSS -->
         <link href="{{asset('public/packages/css/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -46,10 +46,12 @@
         
         
         <div class="container" id="mainContent">
+        <!-- 
         <ol class="breadcrumb">
             <li><a href="#">Home</a></li>
             <li class="active">Dashboard</li>
         </ol>
+         -->
         @section('wrapper')
             
             <div id="sliderFrame">

@@ -34,8 +34,10 @@
     <div class="overlay">
         <div class="container" id="">
             <div class="row">
+            	<!-- 
                 <h1 class="text-primary" style="margin-top:80px;">DRAMAHD.NET</h1>
                 <h5>Watch Drama Online in HD for Free</h5>
+                 -->
             </div>
         </div>
     </div>

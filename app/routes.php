@@ -17,6 +17,9 @@ Route::get('contact.html', array('as' => 'contact', 'uses' => 'HomeController@co
 Route::get('faq.html', array('as' => 'faq', 'uses' => 'HomeController@faq'));
 Route::get('on-going.html', array('as' => 'on-going', 'uses' => 'HomeController@onGoing'));
 
+Route::get('cast/{nameCast}.html', array('as' => 'index.cast', 'uses' => 'HomeController@listByCast'))
+->where(array('nameCast' => '[a-zA-Z0-9-_]+'));
+
 Route::get('genres/{nameGenres}.html', array('as' => 'index.genres', 'uses' => 'HomeController@listByGenre'))
 ->where(array('nameGenres' => '[a-zA-Z0-9-_]+'));
 

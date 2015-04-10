@@ -4,12 +4,13 @@ class FrontHelper {
         $arrCast = array();
         $strRet = '';
         foreach ($casts as $key => $item) {
-            $arrCast[$item['id']] = $item['name'];
+            $arrCast[$item['id']]['name'] = $item['name'];
+            $arrCast[$item['id']]['friendly_name'] = $item['friendly_name'];
         }
         $arrIn = explode(',', $cast_ids);
         foreach ($arrIn as $value) {
             if (array_key_exists($value, $arrCast)) {
-                $strRet .= '<a href="#">' . $arrCast[$value] . '</a>' . ', ';
+                $strRet .= '<a href="'. route('index.cast', $arrCast[$value]['friendly_name']) .'">' . $arrCast[$value]['name'] . '</a>' . ', ';
             }
         }
         return FrontHelper::removeLastChar($strRet);

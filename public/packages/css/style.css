@@ -463,7 +463,8 @@ padding: 20px 0;
 background: url("../images/main-new.jpg") center top no-repeat;;
 background-size: cover;
 margin-top:-30px;
-height: 333px;
+/*height: 333px;*/
+height: 250px;
 }
 .mainHeader:after {
   height: 367px;

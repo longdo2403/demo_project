@@ -18,7 +18,7 @@ class HomeController extends BaseController {
     */
     protected $layout = 'frontend.layouts.master';
     public $data;
-    public $per_pg = 4;
+    public $per_pg = PER_PG_BOX_DRAMA;
     
     /**
      * constructor
@@ -34,7 +34,7 @@ class HomeController extends BaseController {
      * Make Homepage
      */
     public function homepage() {
-        $this->data['title'] = 'Home Page';
+        $this->data['title'] = 'Daily Update - ' . date('j F');;
         $this->data['track'] = 'homepage';
         //$this->data['listGenre'] = GenreModel::listAll();
         return View::make('frontend.pages.homepage')->with($this->data);
@@ -46,7 +46,12 @@ class HomeController extends BaseController {
     public function onGoing() {
         $this->data['title'] = 'On Going';
         $this->data['track'] = 'on-going';
-        return View::make('frontend.pages.ongoing')->with($this->data);
+        
+       	$this->data['listByGenre'] = MovieModel::listOnGoing($this->per_pg);
+        	
+        $this->data['arrCast'] = CastModel::listAll()->toArray();
+        $this->data['arrGenres'] = GenreModel::listAll()->toArray();
+        return View::make('frontend.pages.movie_by_genre')->with($this->data);
     }
     
     /**
@@ -126,7 +131,6 @@ class HomeController extends BaseController {
      * @param unknown $friendly_name
      */
     public function listByGenre($friendly_name) {
-        //var_dump($friendly_name);
         if ($friendly_name == 'all') {
             $this->data['title'] = 'All Genres';
             $this->data['listByGenre'] = MovieModel::listAllMovie($this->per_pg);
@@ -143,4 +147,17 @@ class HomeController extends BaseController {
         return View::make('frontend.pages.movie_by_genre')->with($this->data);
     }
     
+    /**
+     * 
+     */
+    public function listByCast($cast_friendly_name){
+    	$value = CastModel::detailByfriendlyName($cast_friendly_name);
+    	$this->data['title'] = $value->name;
+    	$cast_id = $value->id;
+    	$this->data['listByCast'] = MovieModel::listByCast($cast_id, PER_PG_BOX_CAST);
+    	$this->data['track'] = 'homepage';
+    	$this->data['arrCast'] = CastModel::listAll()->toArray();
+    	$this->data['arrGenres'] = GenreModel::listAll()->toArray();
+    	return View::make('frontend.pages.movie_by_cast')->with($this->data);
+    }
 }
