@@ -8,7 +8,7 @@
             '<span class="text-danger">Status: </span>' . $item['relations']['status']->name . '<br>
              <span class="text-danger">Cast: </span> ' . FrontHelper::generateCastString($item->cast_ids, $arrCast) . ' ... <br>
              <span class="text-info">Description: </span> ' . str_limit($description, $limit = 150, $end = '...') .' <br> '); ?>"
-        rel="popover" data-placement="top" data-original-title="{{$item->title;}}" data-trigger="hover">
+        rel="popover" data-placement="top" data-original-title="{{{$item->title}}}" data-trigger="hover">
             <div class="thumbnail" style="height: 270px;">
                 <img class="boxImgMovie" src="<?= asset("public/packages/images/$item->main_picture") ?>" title="{{$item->title}}" alt="{{$item->title}}">
                 <div class="caption">

@@ -19,15 +19,16 @@ class FrontHelper {
         $arrRet = array();
         $strRet = '';
         foreach ($arrGenre as $key => $item) {
-            $arrRet[$item['id']] = $item['name'];
+            $arrRet[$item['id']]['name'] = $item['name'];
+            $arrRet[$item['id']]['friendly_name'] = $item['friendly_name'];
         }
         $arrIn = explode(',', $genre_ids);
         foreach ($arrIn as $value) {
             if (array_key_exists($value, $arrRet)) {
                 if (!$disp_link) {
-                    $strRet .= '' . $arrRet[$value] . '' . ', ';
+                    $strRet .= '' . $arrRet[$value]['name'] . '' . ', ';
                 } else {
-                    $strRet .= '<a href="#">' . $arrRet[$value] . '</a>' . ', ';
+                    $strRet .= '<a href="' . route('index.genres', $arrRet[$value]['friendly_name']) . '">' . $arrRet[$value]['name'] . '</a>' . ', ';
                 }
                 
             }

@@ -6,22 +6,28 @@
 <div id='player'></div>
 <br>
 <div id="groupBtn">
-	<button class="btn btn-success" onclick="playVideo(0);">Part 1</button>
-	<button class="btn btn-success" onclick="playVideo(1);">Part 2</button>
-	<button class="btn btn-success" onclick="playVideo(2);">Part 3</button>
+    <?php foreach ($listParts as $key=>$item): ?>
+    <button class="btn btn-success" onclick="playVideo(<?= $key; ?>);">Part {{ $item->part_no; }}</button>
+    <?php endforeach; ?>
+    
 </div>
 <br>
 <div id="listEpisode">
     <div class="border-head">
         <h3>
-            <strong class="color-blue">Always (2011) Episodes</strong>
+            <strong class="color-blue">{{$objMovie->title;}}</strong>
         </h3>
     </div>
-    <?php for ($i = 0; $i < 10; $i++): ?>
+    <?php foreach ($listEpisode as $item): ?>
     <dl class="ele-item">
-        <dd class="ele-item"><i class="fa fa-long-arrow-right text-primary"></i> <a href="{{route('watch', array('bouty-lady-123', '999'))}}">Hyde, Jekyll, Me Episode 20 FINAL</a></dd>
+        <dd class="ele-item">
+            <i class="fa fa-long-arrow-right text-primary"></i>
+            <a href="<?= route('watch', array($objMovie->friendly_title, $item->episode_id)) ?>">
+                {{$objMovie->title;}} Episode {{$item->episode_id;}}
+            </a> <?= ($current_ep == $item->episode_id) ? '<span class="label label-primary">Playing ..</span>' : '' ?>
+        </dd>
     </dl>
-    <?php endfor; ?>
+    <?php endforeach; ?>
 </div>
 <script type='text/javascript'>
 	jwplayer('player').setup({
@@ -44,7 +50,7 @@
 				tracks: [{
 				  file: "http://vjs.zencdn.net/v/oceans.mp4"
 				}]
-			}
+			},
 		]
 	});
 	function playVideo(index) {

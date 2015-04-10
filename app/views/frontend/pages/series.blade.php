@@ -7,7 +7,7 @@
     <p><strong>Episodes: </strong>{{$objMovie['relations']['status']->name;}}</p>
     <p><strong>Category: </strong>Korean Drama Movies</p>
     <p><strong>Genres : </strong> {{$str_genres;}}</p>
-    <p><strong>Type: </strong>Movie</p>
+    <p><strong>Type: </strong>{{$objMovie['relations']['type']->type_name}}</p>
     <p><strong>Release: </strong><?php echo date('Y', strtotime($objMovie->release)); ?></p>
     <p><strong>Status: </strong>{{$objMovie['relations']['status']->name;}}</p>
     <p><strong>Description : </strong>{{$objMovie->description;}}</p>
@@ -23,11 +23,11 @@
             <strong class="color-blue">Always (2011) Episodes</strong>
         </h3>
     </div>
-    <?php for ($i = 0; $i < 10; $i++): ?>
+    <?php foreach ($listEpisode as $item): ?>
     <dl class="ele-item">
-        <dd class="ele-item"><i class="fa fa-long-arrow-right text-primary"></i> <a href="{{route('watch', array('bouty-lady-123', '999'))}}">Hyde, Jekyll, Me Episode 20 FINAL</a></dd>
+        <dd class="ele-item"><i class="fa fa-long-arrow-right text-primary"></i> <a href="<?= route('watch', array($objMovie->friendly_title, $item->episode_id)) ?>">{{$objMovie->title;}} Episode {{$item->episode_id;}}</a></dd>
     </dl>
-    <?php endfor; ?>
+    <?php endforeach; ?>
 </div>
 
 <div id="similarDramas">
@@ -36,36 +36,43 @@
             <strong class="color-blue">Smilar Dramas</strong>
         </h3>
     </div>
-    <?php for ($i = 0; $i< 4; $i++): ?>
-    <?php $a = htmlspecialchars('Set in the town of Furano in Hokkaido, Kita no Kunikara centers around the story of the Kuroita family.', ENT_QUOTES) ?>
-    <a href="{{route('series', 'bouty-lady-23')}}" class="col-xs-3 drama-box popoverData" data-content="<?php echo htmlentities('<span class="text-danger">Cast: </span> Long Do, Luu Do ..... <br><span class="text-info">Description: </span> ' . $a .' <br> '); ?>"
-    rel="popover" data-placement="top" data-original-title="Bouty Lady <?php echo $i; ?>" data-trigger="hover">
-        <div class="thumbnail">
-            <img src="http://placehold.it/170x180">
-            <div class="caption" style="height: 90px;">
-                <div style="height: 33px; ">
-                    <h5 style="margin-top:0px;" class="text-center text-orange">Bouty Lady <?= $i ?></h5>
-                </div>
-                <div>
-                    <p style="margin: 0px; font-size:85%;"><strong class="text-purple">Genres</strong> <span class="text-concrete">Drama, Romance, Family</span></p>
-                </div>
-                
-            </div>
-        </div>
-    </a>
-    <a href="#" class="col-xs-3 drama-box popoverData" data-content="Popover with data-trigger" rel="popover" data-placement="top" data-original-title="In The Room Large Large <?= $i ?>" data-trigger="hover">
-        <div class="thumbnail">
-            <img src="http://placehold.it/170x180">
-            <div class="caption" style="height: 90px;">
-                <div style="height: 33px; ">
-                    <h5 style="margin-top:0px;" class="text-center text-orange">In The Room Large Large <?= $i ?></h5>
-                </div>
-                <div style="height: 25px; ">
-                    <p style="margin: 0px; font-size:85%;"><strong class="text-purple">Genres</strong> <span class="text-concrete">Drama, Romance, Family</span></p>
+    
+    <?php if (!$listRelativeMovie->isEmpty()): ?>
+        <?php foreach ($listRelativeMovie as $item): ?>
+        <?php $description = htmlspecialchars($item->description, ENT_QUOTES); ?>
+        <a href="{{route('series', $item->friendly_title)}}" class="col-xs-3 drama-box popoverData" data-content="
+        <?php echo htmlentities(
+            '<span class="text-danger">Status: </span>' . $item['relations']['status']->name . '<br>
+             <span class="text-danger">Cast: </span> ' . FrontHelper::generateCastString($item->cast_ids, $arrCast) . ' ... <br>
+             <span class="text-info">Description: </span> ' . str_limit($description, $limit = 150, $end = '...') .' <br> '); ?>"
+        rel="popover" data-placement="top" data-original-title="{{{$item->title}}}" data-trigger="hover">
+            <div class="thumbnail" style="height: 270px;">
+                <img class="boxImgMovie" src="<?= asset("public/packages/images/$item->main_picture") ?>" title="{{$item->title}}" alt="{{$item->title}}">
+                <div class="caption">
+                    <div style="height: 33px; ">
+                        <h5 style="margin-top:0px;" class="text-center text-orange">{{str_limit($item->title, 30, '...')}}</h5>
+                    </div>
+                    <div style="height: 25px; ">
+                        <p style="margin: 0px; font-size:85%;"><strong class="text-purple">Genres</strong> <span class="text-concrete"><?= str_limit(FrontHelper::generateGenresString($item->genre_ids, $arrGenres), 35, '...') ?></span></p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </a>
-    <?php endfor; ?>
+        </a>
+        
+        <?php endforeach; ?>
+        <span class="clearfix"></span>
+    <?php else: ?>
+    <p class="alert alert-warning">The content is empty !!</p>
+    <?php endif; ?>
+    <script>
+    $(document).ready(function(){
+        $(".popoverData").popover({
+        	html : true,
+        	content: function() {
+        		return $('#popover_content_wrapper').html();
+            }
+        });
+    })
+    </script>
 </div>
 @stop

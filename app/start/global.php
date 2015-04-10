@@ -85,3 +85,4 @@ App::missing(function($exception)
 });
 
 require app_path().'/filters.php';
+require app_path().'/constants.php';

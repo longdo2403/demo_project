@@ -22,12 +22,12 @@
 	    <ul class="media-list sidebar-list">
 	      <li class="media">
 	        <div class="media-left">
-	          <a href="#">
+	          <a href="{{route('series', $item->friendly_title)}}" title="{{$item->title;}}">
 	            <img width="60" height="85" class="media-object" src="<?= asset("public/packages/images/$item->main_picture") ?>" title="{{$item->title}}" alt="{{$item->title}}">
 	          </a>
 	        </div>
 	        <div class="media-body">
-	          <strong class="media-heading">{{$item->title}}</strong><br>
+	          <strong class="media-heading">{{str_limit($item->title, 60, '...')}}</strong><br>
 	          <span>Watched {{$item->watched}} times.</span><br>
 	          <a href="#" class="btn btn-success btn-xs">See episodes</a>
 	        </div>
@@ -47,12 +47,12 @@
 	    <ul class="media-list sidebar-list">
 	      <li class="media">
 	        <div class="media-left">
-	          <a href="#">
-	            <img width="60" height="85" class="media-object" src="<?= asset("public/packages/images/$item->main_picture") ?>" alt="{{$item->title}}">
+	          <a href="{{route('series', $item->friendly_title)}}" title="{{$item->title;}}">
+	            <img width="60" height="85" class="media-object" src="<?= asset("public/packages/images/$item->main_picture") ?>" title="{{$item->title}}" alt="{{$item->title}}">
 	          </a>
 	        </div>
 	        <div class="media-body">
-	          <strong class="media-heading">{{$item->title}}</strong><br>
+	          <strong class="media-heading">{{str_limit($item->title, 60, '...')}}</strong><br>
 	          <span>Watched {{$item->watched}} times.</span><br>
 	          <a href="#" class="btn btn-success btn-xs">See episodes</a>
 	        </div>

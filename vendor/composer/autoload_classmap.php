@@ -18,6 +18,7 @@ return array(
     'SessionHandlerInterface' => $vendorDir . '/symfony/http-foundation/Symfony/Component/HttpFoundation/Resources/stubs/SessionHandlerInterface.php',
     'StatusModel' => $baseDir . '/app/models/StatusModel.php',
     'TestCase' => $baseDir . '/app/tests/TestCase.php',
+    'TypeModel' => $baseDir . '/app/models/TypeModel.php',
     'User' => $baseDir . '/app/models/User.php',
     'UserController' => $baseDir . '/app/controllers/UserController.php',
     'Whoops\\Module' => $vendorDir . '/filp/whoops/src/deprecated/Zend/Module.php',

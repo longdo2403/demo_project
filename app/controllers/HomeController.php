@@ -58,23 +58,39 @@ class HomeController extends BaseController {
         } catch (ModelNotFoundException $e) {
             return App::abort(404);
         }
-        
         $this->data['title'] = $objMovie->title . ' | Series';
         $this->data['track'] = 'homepage';
-        $this->data['str_casts'] = FrontHelper::generateCastString($objMovie->cast_ids, CastModel::listAll()->toArray());
-        $this->data['str_genres'] = FrontHelper::generateGenresString($objMovie->genre_ids, GenreModel::listAll()->toArray(), true) ;
+        $this->data['arrCast'] = CastModel::listAll()->toArray();
+        $this->data['arrGenres'] = GenreModel::listAll()->toArray();
+        $this->data['str_casts'] = FrontHelper::generateCastString($objMovie->cast_ids, $this->data['arrCast']);
+        $this->data['str_genres'] = FrontHelper::generateGenresString($objMovie->genre_ids, $this->data['arrGenres'], true) ;
         $this->data['objMovie'] = $objMovie;
-        
-        
+        $this->data['listRelativeMovie'] = MovieModel::listRelativeMovie($objMovie->id, $objMovie->type_id, $objMovie->genre_ids);
+        $this->data['listEpisode'] = EpisodeModel::listAll($objMovie->id);
         return View::make('frontend.pages.series')->with($this->data);
     }
     
     /**
      * Make watch page
      */
-    public function watch() {
-        $this->data['title'] = 'Watching Bouty Lady 123';
-        $this->data['track'] = 'watch';
+    public function watch($friendly_title, $episode_id) {
+        try {
+            $objMovie = MovieModel::detailMovie($friendly_title);
+        } catch (ModelNotFoundException $e) {
+            return App::abort(404);
+        }
+        $parts = PartModel::listAllPart($objMovie->id, $episode_id);
+        
+        if ($parts->isEmpty()) {
+            return App::abort(404);
+        }
+        
+        $this->data['title'] = 'Watching: ' . $objMovie->title;
+        $this->data['track'] = 'homepage';
+        $this->data['objMovie'] = $objMovie;
+        $this->data['current_ep'] = $episode_id;
+        $this->data['listEpisode'] = EpisodeModel::listAll($objMovie->id);
+        $this->data['listParts'] = PartModel::listAllPart($objMovie->id, $episode_id);
         return View::make('frontend.pages.watch')->with($this->data);
     }
     
